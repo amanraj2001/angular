@@ -1,0 +1,478 @@
+<div class="container">
+  <form [formGroup]="studentform">
+
+    <h3 for="">student Info:</h3>
+    <ng-container formGroupName="name">
+      <label for="">first Name</label>
+      <input type="text" formControlName="firstname" class="form-control">
+      <div *ngIf="fname && fname.invalid && fname.touched" class="error">
+       first Name is required
+      </div>
+
+      <label for="">middle name</label>
+      <input type="text" formControlName="middlename" class="form-control">
+      <div *ngIf="mname && mname.invalid && mname.touched" class="error">
+       middle Name is required
+      </div>
+      <label for="">last name</label>
+      <input type="text" formControlName="lastname" class="form-control">
+      <div *ngIf="lname && lname.invalid && lname.touched" class="error">
+        last Name is required
+       </div>
+    </ng-container>
+    <label for="">Date of birth</label>
+    <input type="text" formControlName="Dob" class="form-control">
+    <div *ngIf="dobb && dobb.invalid && dobb.touched" class="error">
+      <div *ngIf="dobb.errors?.['required']">
+        Field is empty
+      </div>
+      <div *ngIf="dobb.errors?.['pattern']">
+       Incorrect date format
+      </div>
+      </div>
+
+    <label for="">Place of birth</label>
+    <input type="text" formControlName="placeofbirth" class="form-control">
+    <div *ngIf="plOB && plOB.invalid && plOB.touched" class="error">
+      field is required
+     </div>
+     <div>
+
+       <label for="">First language</label>
+       <select name="" id="" class="form-select"  formControlName="Firstlang">
+        <option >Select Language</option>
+         <option *ngFor="let item of firlang, let i = index">{{item}}</option>
+        </select>
+      </div>
+      <div *ngIf="studentform.get('Firstlang') && studentform.get('Firstlang')?.invalid && studentform.get('Firstlang')?.touched ">
+        empty
+
+      </div>
+    <ng-container formGroupName="Address">
+      <label for="">City</label>
+      <input type="text" formControlName="city" class="form-control" >
+      <div *ngIf="cityC && cityC.invalid && cityC.touched" class="error">
+        this field is required
+      </div>
+      <label for="">State</label>
+      <input type="text" formControlName="state" class="form-control" >
+      <div *ngIf="stateC && stateC.invalid && stateC.touched" [ngClass]="{'error':true}">
+        this field is required
+
+      </div>
+      <label for="">Country</label>
+      <input type="text" formControlName="country" class="form-control" >
+      <div *ngIf="countryC && countryC.invalid && countryC.touched" class="error">
+        this field is required
+
+      </div>
+      <label for="">Pin</label>
+      <input type="text" formControlName="pin" class="form-control" >
+      <div *ngIf="ppin && ppin.invalid && (ppin.dirty ||  ppin.touched)">
+
+        <div *ngIf="ppin.errors?.['pattern']" class="error" >
+           digits should be 5
+
+        </div>
+        <div *ngIf="ppin.errors?.['required']" [ngClass]="{'error': true}">
+          field is empty
+        </div>
+
+      </div>
+    </ng-container>
+
+<div class="d-flex gap-5 w-100 ">
+<div class="w-100">
+<!-- father -->
+      <h3>Father details</h3>
+      <ng-container formGroupName="father_name">
+        <label for="">first Name</label>
+        <input type="text" formControlName="firstname" class="form-control">
+        <div *ngIf="fathname && fathname.invalid && fathname.touched">
+          <div *ngIf="fathname.errors?.['required']" class="error">
+            field is empty
+
+          </div>
+          <div *ngIf="fathname.errors?.['minlength']" class="error">
+            Atleast 3 characters required
+
+          </div>
+          <div *ngIf="fathname.errors?.['pattern']" class="error">
+            number is not allowed
+
+          </div>
+        </div>
+        <label for="">middle name</label>
+        <input type="text" formControlName="middlename" class="form-control">
+        <div *ngIf="fathMname && fathMname.invalid && fathMname.touched">
+          <div *ngIf="fathMname.errors?.['required']" class="error">
+            field is empty
+
+          </div>
+          <div *ngIf="fathMname.errors?.['minlength']" class="error">
+            Atleast 3 characters required
+
+          </div>
+          <div *ngIf="fathMname.errors?.['pattern']" class="error">
+            number is not allowed
+
+          </div>
+        </div>
+        <label for="">last name</label>
+        <input type="text" formControlName="lastname" class="form-control">
+        <div *ngIf="fathLname && fathLname.invalid && fathLname.touched">
+          <div *ngIf="fathLname.errors?.['required']" class="error">
+            field is empty
+
+          </div>
+          <div *ngIf="fathLname.errors?.['minlength']" class="error">
+            Atleast 3 characters required
+
+          </div>
+          <div *ngIf="fathLname.errors?.['pattern']" class="error">
+            number is not allowed
+
+          </div>
+        </div>
+        <label for="">Email</label>
+        <input type="text" formControlName="email" class="form-control">
+        <div *ngIf="femail && femail.invalid && femail.touched">
+          <div *ngIf="femail.errors?.['required']" class="error">
+            field is empty
+
+          </div>
+          <div *ngIf="femail.errors?.['email']" class="error">
+            Incorrect Email
+          </div>
+          </div>
+        <label for="">Education Qualification</label>
+        <input type="text" formControlName="Educationqual" class="form-control">
+        <div *ngIf="fqual && fqual.invalid && fqual.touched" class="error">
+          field is empty
+
+        </div>
+        <label for="">Profession</label>
+        <input type="text" formControlName="profession" class="form-control">
+        <div *ngIf="fprof && fprof.invalid && fprof.touched" class="error">
+          field is empty
+
+        </div>
+        <label for="">Designation</label>
+        <input type="text" formControlName="designation" class="form-control">
+        <div *ngIf="fdesig && fdesig.invalid && fdesig.touched" class="error">
+          field is empty
+
+        </div>
+        <label for="">Phone</label>
+        <input type="text" formControlName="phone" class="form-control">
+        <div *ngIf="fphone && fphone.invalid && fphone.touched">
+
+          <div *ngIf="fphone.errors?.['required']" class="error">
+            Field is empty
+
+          </div>
+          <div *ngIf="fphone.errors?.['pattern']" class="error">
+              digits should be 10 characters long
+          </div>
+
+        </div>
+
+      </ng-container>
+    </div>
+    <div class="w-100">
+
+      <h3>mother details</h3>
+      <ng-container formGroupName="mother_name">
+      <label for="">first Name</label>
+      <input type="text" formControlName="firstname" class="form-control">
+      <div *ngIf="mothname && mothname.invalid && mothname.touched">
+        <div *ngIf="mothname.errors?.['required']" class="error">
+          field is empty
+
+        </div>
+        <div *ngIf="mothname.errors?.['minlength']" class="error">
+          Atleast 3 characters required
+
+        </div>
+        <div *ngIf="mothname.errors?.['pattern']" class="error">
+          number is not allowed
+
+        </div>
+      </div>
+      <label for="">middle name</label>
+      <input type="text" formControlName="middlename" class="form-control">
+      <div *ngIf="mothMname && mothMname.invalid && mothMname.touched">
+        <div *ngIf="mothMname.errors?.['required']" class="error">
+          field is empty
+
+        </div>
+        <div *ngIf="mothMname.errors?.['minlength']" class="error">
+          Atleast 3 characters required
+
+        </div>
+        <div *ngIf="mothMname.errors?.['pattern']" class="error">
+          number is not allowed
+
+        </div>
+      </div>
+      <label for="">last name</label>
+      <input type="text" formControlName="lastname" class="form-control">
+      <div *ngIf="mothLname && mothLname.invalid && mothLname.touched">
+        <div *ngIf="mothLname.errors?.['required']" class="error">
+          field is empty
+
+        </div>
+        <div *ngIf="mothLname.errors?.['minlength']" class="error">
+          Atleast 3 characters required
+
+        </div>
+        <div *ngIf="mothLname.errors?.['pattern']" class="error">
+          number is not allowed
+
+        </div>
+      </div>
+      <label for="">Email</label>
+      <input type="text" formControlName="email" class="form-control">
+      <div *ngIf="memail && memail.invalid && memail.touched">
+        <div *ngIf="memail.errors?.['required']" class="error">
+          field is empty
+        </div>
+        <div *ngIf="memail.errors?.['email']" class="error">
+          Incorrect Mail ID
+
+        </div>
+
+      </div>
+
+      <label for="">Education Qualification</label>
+      <input type="text" formControlName="Educationqual" class="form-control">
+      <div *ngIf="mqual && mqual.invalid && mqual.touched" class="error">
+        field is empty
+
+      </div>
+      <label for="">Profession</label>
+      <input type="text" formControlName="profession" class="form-control">
+      <div *ngIf="mprof && mprof.invalid && mprof.touched" class="error">
+        field is empty
+
+      </div>
+      <label for="">Designation</label>
+      <input type="text" formControlName="designation" class="form-control">
+      <div *ngIf="mdesig && mdesig.invalid && mdesig.touched" class="error">
+        field is empty
+
+      </div>
+      <label for="">Phone</label>
+      <input type="text" formControlName="phone" class="form-control">
+      <div *ngIf="mphone && mphone.invalid && mphone.touched" class="error">
+
+        <div *ngIf="mphone.errors?.['required']">
+          Field is empty
+
+        </div>
+        <div *ngIf="mphone.errors?.['pattern']">
+            digits should be 10 characters long
+        </div>
+
+      </div>
+
+    </ng-container>
+  </div>
+  </div>
+
+
+
+  <ng-container formArrayName="emergency_contactlist">
+    <h3>Emergency Details</h3>
+    <ng-container *ngFor="let item of emgList.controls,let i = index">
+      <ng-container formGroupName="{{i}}" class="d-flex">
+        <!-- <div>
+
+          <label for="">Relation</label>
+          <select class="form-select" name="" id="" (change)="getsel($event)">
+            <option >select relation</option>
+            <option  *ngFor="let i of array">{{i}}</option>
+          </select>
+        </div> -->
+        <div>
+          <label for="">Relation</label>
+          <input type="text" formControlName="Relation" class="form-control">
+          <div *ngIf="eRelation && eRelation.invalid && eRelation.touched">
+            Fireld is empty
+
+          </div>
+        </div>
+        <div>
+
+          <label for="">Number</label>
+          <input type="text" formControlName="Num" class="form-control">
+          <div *ngIf="enumber && enumber.invalid && enumber.touched">
+            Fireld is empty
+
+          </div>
+
+        </div>
+
+
+      </ng-container>
+
+
+    </ng-container>
+
+
+  </ng-container>
+  <h3>Reference </h3>
+    <ng-container *ngFor="let item of ref.controls; let i=index" formArrayName="reference">
+      <ng-container formGroupName="{{i}}">
+        <div>
+          <label for="">Reference Details</label>
+          <select name="" id="" class="form-select" formControlName="referenceDetails">
+            <option >select</option>
+            <option >option1</option>
+            <option >option2</option>
+            <option >option3</option>
+            <option >option4</option>
+          </select>
+          <label for="">Reference Through</label>
+          <input type="text" class="form-control" formControlName="referenceThrough"/>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary mt-2" (click)="addfield()">Add Field</button>
+  </ng-container>
+
+  <div class="d-flex justify-content-center">
+
+    <button class="btn btn-success mt-2" type="button" [disabled]="studentform.invalid" (click)="addData()">submit</button>
+  </div>
+
+</form>
+  <table class="table">
+    <tr>
+      <th>Firstname</th>
+      <th>Middlename</th>
+      <th>Lastname</th>
+      <th>Date-of-birth</th>
+      <th>Place-of-birth</th>
+      <th>Firstlanguage</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Pin</th>
+      <th>Relatiion</th>
+      <th>Number</th>
+      <th>ReferenceDetails</th>
+      <th>ReferenceThrough</th>
+    </tr>
+    <tr *ngFor="let item of arrdata; let i = index">
+      <td>{{item.name.firstname}}</td>
+      <td>{{item.name.middlename}}</td>
+      <td>{{item.name.lastname}}</td>
+      <td>{{item.Dob}}</td>
+      <td>{{item.placeofbirth}}</td>
+      <td>{{item.Firstlang}}</td>
+      <td>{{item.Address.city}}</td>
+      <td>{{item.Address.state}}</td>
+      <td>{{item.Address.country}}</td>
+      <td>{{item.Address.pin}}</td>
+      <!-- <td>{{item.father_name.firstname}}</td>
+      <td>{{item.father_name.middlename}}</td>
+      <td>{{item.father_name.lastname}}</td>
+      <td>{{item.father_name.email}}</td>
+      <td>{{item.father_name.Educationqual}}</td>
+      <td>{{item.father_name.profession}}</td>
+      <td>{{item.father_name.designation}}</td>
+      <td>{{item.father_name.phone}}</td>
+      <td>{{item.mother_name.firstname}}</td>
+      <td>{{item.mother_name.middlename}}</td>
+      <td>{{item.mother_name.lastname}}</td>
+      <td>{{item.mother_name.email}}</td>
+      <td>{{item.mother_name.Educationqual}}</td>
+      <td>{{item.mother_name.profession}}</td>
+      <td>{{item.mother_name.designation}}</td>
+      <td>{{item.mother_name.phone}}</td> -->
+      <ng-container *ngFor="let val of item.emergency_contactlist,let x = index">
+        <td>{{val.Relation}}</td>
+
+        <td>{{val.Num}}</td>
+      </ng-container>
+      <ng-container *ngFor="let x of item.reference">
+        <td>{{x.referenceDetails}}</td>
+        <td>{{x.referenceThrough}}</td>
+
+      </ng-container>
+      <td>
+        <button  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="det(i)">detail</button>
+      </td>
+
+
+
+    </tr>
+  </table>
+
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      </div>
+      <div  class="modal-body">
+
+          <!-- <td>{{item.Address.city}}</td>
+          <td>{{item.Address.state}}</td>
+      <td>{{item.Address.country}}</td>
+      <td>{{item.Address.pin}}</td> -->
+      <ng-container *ngFor="let item of modelarr;let i = index">
+
+        <div *ngIf="x-1==i">
+          <h3>Fathers Info</h3>
+          <P>firstname: <strong>{{item[i].father_name.firstname}}</strong></P>
+          <p>middlename: <strong>{{item[i].father_name.middlename}}</strong></p>
+          <p>lastname: <strong>{{item[i].father_name.lastname}}</strong></p>
+          <p>email: <strong>{{item[i].father_name.email}}</strong></p>
+          <p>Educationqualification: <strong>{{item[i].father_name.Educationqual}}</strong></p>
+          <p>Profession: <strong>{{item[i].father_name.profession}}</strong></p>
+          <p>Designation: <strong>{{item[i].father_name.designation}}</strong></p>
+          <p>Phone number:<strong>{{item[i].father_name.phone}}</strong></p>
+
+          <h3>Mothers Info</h3>
+          <p> firstname: <strong>{{item[i].mother_name.firstname}}</strong></p>
+          <p> middlename: <strong>{{item[i].mother_name.middlename}}</strong></p>
+          <p> lastname:<strong>{{item[i].mother_name.lastname}}</strong></p>
+          <p> email:<strong>{{item[i].mother_name.email}}</strong></p>
+          <p> Educationqualification:<strong>{{item[i].mother_name.Educationqual}}</strong></p>
+          <p>Profession:<strong>{{item[i].mother_name.profession}}</strong></p>
+          <p> Designation: <strong>{{item[i].mother_name.designation}}</strong></p>
+          <p>Phone number:<strong>{{item[i].mother_name.phone}}</strong></p>
+          </div>
+        </ng-container>
+      <!-- <td>{{item.father_name.firstname}}</td> -->
+      <!-- <td>{{item[i+1].father_name.firstname}}</td>
+      <td>{{item[i+1].father_name.middlename}}</td>
+      <td>{{item[i+1].father_name.lastname}}</td>
+      <td>{{item[i+1].father_name.email}}</td>
+      <td>{{item[i+1].father_name.Educationqual}}</td>
+      <td>{{item[i+1].father_name.profession}}</td>
+      <td>{{item[i+1].father_name.designation}}</td>
+      <td>{{item[i+1].father_name.phone}}</td> -->
+      <!-- <td>{{item.mother_name.firstname}}</td>
+      <td>{{item.mother_name.middlename}}</td>
+      <td>{{item.mother_name.lastname}}</td>
+      <td>{{item.mother_name.email}}</td>
+      <td>{{item.mother_name.Educationqual}}</td>
+      <td>{{item.mother_name.profession}}</td>
+      <td>{{item.mother_name.designation}}</td>
+      <td>{{item.mother_name.phone}}</td> -->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
